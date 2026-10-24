@@ -14,6 +14,9 @@ Protokół działania: [[CLAUDE]]. Spec źródłowy (archiwum, wdrożony wybiór
 2. Piszesz naturalnie: „Sprawdź CDR.PL”, „Czy warto kupić TTWO.US?”, „Mam 5000 zł, jak wejść w XTB.PL?”, „XTB.PL -8%, co się stało?”, „Przegląd portfela”, albo wklejasz screenshot wykresu.
 3. Raport: `analizy/`, wykres: `wykresy/`, liczby: `dane/`.
 
+## Bez Claude Code (darmowy Claude, Projekt)
+Wersja „lite” do zwykłego czatu Claude, też na darmowym planie: [[projekt-free/JAK-USTAWIC]] ([na GitHubie](https://github.com/Hipas98/inwestowanie-xtb/blob/main/projekt-free/JAK-USTAWIC.md)). Instrukcje projektu + plik wiedzy + kalkulator pozycji działający bez internetu.
+
 ## Praca z telefonu (Claude Code w chmurze)
 Działa w aplikacji Claude (zakładka **Code**) albo na claude.ai/code. Sesja startuje w chmurze z repozytorium na GitHubie. `CLAUDE.md`, subagenci z `.claude/agents/` i hook instalujący biblioteki ładują się automatycznie.
 
