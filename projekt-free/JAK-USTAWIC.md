@@ -1,46 +1,44 @@
-# Doradca XTB w darmowym Claude (Projekt, bez Claude Code)
+# Doradca XTB w darmowym Claude (Projekt na telefonie)
 
-Wersja „lite” systemu z tego repo. Działa w zwykłym czacie Claude, także na darmowym planie i w aplikacji na telefonie.
+Cały system z tego repo skompresowany do 4 plików. Działa w zwykłym czacie Claude, na darmowym planie, w aplikacji na telefonie.
 
-## Co jest w środku
-| Plik | Gdzie trafia | Po co |
+## Pliki
+| Plik | Gdzie trafia | Co daje |
 |---|---|---|
-| `INSTRUKCJE-PROJEKTU.md` | wklejasz w pole **Instrukcje** projektu | protokół: zasady danych, routing, kolejność analizy |
-| `wiedza.md` | **Pliki** projektu | koszty XTB, podatki, IKE/IKZE, rubryka confidence, szablon raportu, checklista |
-| `kalkulator_pozycji.py` | **Pliki** projektu | liczy akcje na transzę, stratę, zysk netto po kosztach XTB i podatku, R:R |
-| `portfel.md` | **Pliki** projektu (po uzupełnieniu) | Twój kapitał, limity ryzyka i pozycje |
+| `INSTRUKCJE-PROJEKTU.md` | wklejasz w pole **Instrukcje** projektu | protokół zespołu: zasady danych, routing, kolejność analizy |
+| `wiedza.md` | **Pliki** projektu | koszty XTB, podatki, IKE/IKZE, skąd brać dane, adwokat diabła, weryfikacja, rubryka, szablon raportu |
+| `doradca.py` | **Pliki** projektu | wskaźniki, wsparcia/opory i wykres z pliku notowań; wielkość pozycji po kosztach XTB i podatku; przegląd portfela |
+| `portfel.md` | **Pliki** projektu (najpierw uzupełnij) | kapitał, limity ryzyka, pozycje, dziennik, lekcje |
 
 ## Ustawienie (raz, ok. 10 minut)
-1. **Włącz narzędzia:** Claude → Ustawienia → Funkcje (Capabilities) → włącz **Wykonywanie kodu i tworzenie plików** (Code execution and file creation) oraz **wyszukiwanie w internecie**. Bez wykonywania kodu kalkulator nie zadziała.
-2. **Utwórz projekt:** Projekty → Nowy projekt → nazwa „Doradca XTB”. Jeśli w aplikacji nie ma tej opcji, zrób to na claude.ai w przeglądarce telefonu. Na darmowym planie możesz mieć do 5 projektów.
-3. **Instrukcje:** otwórz [INSTRUKCJE-PROJEKTU.md (surowy tekst)](https://raw.githubusercontent.com/Hipas98/inwestowanie-xtb/main/projekt-free/INSTRUKCJE-PROJEKTU.md), skopiuj całość i wklej w pole instrukcji projektu.
-4. **Pliki:** pobierz i dodaj do plików projektu:
-   - [wiedza.md](https://raw.githubusercontent.com/Hipas98/inwestowanie-xtb/main/projekt-free/wiedza.md)
-   - [kalkulator_pozycji.py](https://raw.githubusercontent.com/Hipas98/inwestowanie-xtb/main/projekt-free/kalkulator_pozycji.py)
-   - [portfel.md](https://raw.githubusercontent.com/Hipas98/inwestowanie-xtb/main/projekt-free/portfel.md), najpierw uzupełniony
+1. **Pobierz paczkę:** [doradca-xtb.zip](https://github.com/Hipas98/inwestowanie-xtb/raw/main/projekt-free/doradca-xtb.zip) → w aplikacji Pliki stuknij ZIP, żeby go rozpakować (powstanie folder z 4 plikami).
+2. **Włącz narzędzia:** Claude → Ustawienia → Funkcje → włącz **Wykonywanie kodu i tworzenie plików** oraz **wyszukiwanie w internecie**.
+3. **Utwórz projekt:** Projekty → Nowy projekt → „Doradca XTB”. Jeśli aplikacja nie ma tej opcji, zrób to na claude.ai w przeglądarce telefonu.
+4. **Instrukcje:** otwórz `INSTRUKCJE-PROJEKTU.md`, skopiuj całość, wklej w pole **Instrukcje** projektu. Ten plik wklejasz, nie wgrywasz.
+5. **Pliki:** w projekcie „Dodaj plik” → `wiedza.md`, `doradca.py`, `portfel.md`. Jeśli plik .py się nie wgrywa: „Dodaj tekst”, wklej treść i nazwij `doradca.py`.
+6. **Portfel:** uzupełnij `portfel.md` przed wgraniem albo napisz w czacie projektu „Uzupełnij ze mną portfel”, a potem podmień plik.
+7. **Test:** nowy czat w projekcie → „Sprawdź CDR.PL”. Claude poda linki do pobrania notowań. Pobierz plik, dołącz go do czatu, a odpowiedź powinna zawierać wykres z poziomami.
 
-   Na telefonie: otwórz link → udostępnij/zapisz do Plików → w projekcie „Dodaj plik”. Jeśli wgranie pliku nie działa, użyj „Dodaj tekst”: skopiuj treść i nadaj nazwę jak oryginał.
-5. **Test:** nowy czat w projekcie → „Sprawdź CDR.PL”. Odpowiedź powinna mieć cenę z datą, źródła z linkami i decyzję.
-
-## Jak używać
-- **Najlepsze dane: screenshot z xStation.** Wyślij zrzut wykresu (z widoczną ceną i interwałem) + pytanie, np. „Czy warto kupić? Mam 3000 zł na IKE”.
+## Jak używać na co dzień
+- **Analiza spółki:** otwórz w przeglądarce `https://stooq.pl/q/d/l/?s=cdr&i=d` (zamień `cdr` na ticker; spółki z USA: `ttwo.us`) oraz benchmark `https://stooq.pl/q/d/l/?s=wig20&i=d` (USA: `s=^spx`). Dołącz oba pliki do czatu i napisz „Czy warto kupić? Mam 3000 zł na IKE”.
+- Do tego **screenshot z xStation** z aktualną ceną: najlepsze źródło bieżącej ceny.
 - „Sprawdź X”: szybki przegląd, oszczędza limit.
-- „Czy warto kupić X?” / „Mam N zł, jak wejść w X?”: pełny raport z planem wejścia.
 - „X -8%, co się stało?”: wyjaśnienie ruchu.
-- „Przegląd portfela”: sprawdzenie pozycji z portfel.md.
-- Po transakcji: „Kupiłem 10 CDR po 265 na IKE”. Claude poda nową treść portfel.md, którą podmieniasz w plikach projektu.
+- „Przegląd portfela” + screenshot listy pozycji z xStation: flagi przebitych poziomów, koncentracja, waluty.
+- Po transakcji: „Kupiłem 10 CDR po 265 na IKE”. Claude poda nowy `portfel.md` do podmiany w plikach projektu.
 
-## Ograniczenia wobec wersji Claude Code (uczciwie)
-| | Claude Code (repo) | Projekt w darmowym Claude |
-|---|---|---|
-| Kursy i wskaźniki | skrypt pobiera dane z Yahoo, liczy SMA/RSI/ATR i poziomy | z wyszukiwarki lub Twojego screenshota; brak automatycznych wskaźników |
-| Wykres z naniesionymi poziomami | generowany automatycznie | brak; Claude czyta Twój screenshot |
-| Fundamenty | skrypt + weryfikacja w raporcie spółki | wyszukiwarka + raport spółki |
-| Arytmetyka pozycji | skrypt | ten sam kalkulator (w środowisku kodu) |
-| Weryfikator i adwokat diabła | osobni subagenci (niezależny kontekst) | sekcje w tej samej odpowiedzi; słabsza niezależność |
-| Portfel i dziennik | pliki aktualizowane automatycznie | podmieniasz plik ręcznie |
-| Limity | plan Pro/Max | darmowy limit odnawia się co ~5 h; pełny raport z wyszukiwaniem zużywa go szybko |
+## Co działa jak w pełnej wersji, a co słabiej
+| Element | Status |
+|---|---|
+| Wskaźniki, poziomy, siła względna, wykres | jak w pełnej wersji, pod warunkiem że dołączysz plik notowań |
+| Wielkość pozycji, koszty XTB, podatek, R:R | jak w pełnej wersji |
+| Przegląd portfela | jak w pełnej wersji, ceny podajesz Ty (screenshot) |
+| Koszty, podatki, rubryka, szablon raportu | jak w pełnej wersji |
+| Adwokat diabła i weryfikator | te same procedury, ale w tym samym czacie (mniej niezależne niż osobni agenci) |
+| Fundamenty | z wyszukiwarki zamiast skryptu; wolniej i mniej systematycznie |
+| Portfel i dziennik | podmieniasz plik ręcznie |
+| Limity | darmowy limit odnawia się co ~5 h; pełny raport zużywa go szybko |
 
-Najsłabszy punkt tej wersji to aktualność ceny. Zawsze sprawdzaj, czy cena w raporcie zgadza się z xStation.
+Gdy stooq pokazuje komunikat o limicie zamiast pliku, użyj zapasowego linku z `wiedza.md` (Yahoo).
 
 To narzędzie wspierające decyzje, nie doradztwo inwestycyjne. Decyzja należy do Ciebie.

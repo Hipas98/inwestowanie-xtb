@@ -14,7 +14,8 @@ cp "$ROOT"/.claude/agents/*.md "$OUT/.claude/agents/"
 cp "$ROOT/.claude/settings.json" "$OUT/.claude/"
 cp "$ROOT"/scripts/*.py "$ROOT"/scripts/*.sh "$OUT/scripts/"
 cp "$ROOT"/szablony/*.md "$OUT/szablony/"
-mkdir -p "$OUT/projekt-free" && cp "$ROOT"/projekt-free/* "$OUT/projekt-free/"
+mkdir -p "$OUT/projekt-free" && cp "$ROOT"/projekt-free/*.md "$ROOT"/projekt-free/*.py "$OUT/projekt-free/"
+(cd "$OUT/projekt-free" && zip -q -X doradca-xtb.zip INSTRUKCJE-PROJEKTU.md wiedza.md doradca.py portfel.md)
 cp "$ROOT/szablony/portfel.md" "$OUT/portfel.md"
 cp "$ROOT/szablony/dziennik.md" "$OUT/dziennik.md"
 touch "$OUT"/{analizy,dane,wykresy}/.gitkeep
